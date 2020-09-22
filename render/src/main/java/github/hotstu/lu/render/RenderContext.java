@@ -71,12 +71,12 @@ public class RenderContext extends LuContext {
         //TODO
     }
 
-    private final ArrayList<Runnable> penddingTasks = new ArrayList<>();
-    private final Runnable peddingRunnable = () -> {
+    private final ArrayList<Runnable> pendingTasks = new ArrayList<>();
+    private final Runnable paddingRunnable = () -> {
         ArrayList<Runnable> tasks;
-        synchronized (penddingTasks) {
-             tasks = new ArrayList<>(penddingTasks);
-            penddingTasks.clear();
+        synchronized (pendingTasks) {
+             tasks = new ArrayList<>(pendingTasks);
+            pendingTasks.clear();
         }
         Log.d("RC", "post run async in batch：" + tasks.size());
 
@@ -95,9 +95,11 @@ public class RenderContext extends LuContext {
             Log.d("RC", "post run sync");
             runnable.run();
         } else {
-            this.penddingTasks.add(runnable);
-            this.mMainHandler.removeCallbacks(peddingRunnable);
-            this.mMainHandler.post(peddingRunnable);
+            synchronized (this.pendingTasks) {
+                this.pendingTasks.add(runnable);
+            }
+            this.mMainHandler.removeCallbacks(paddingRunnable);
+            this.mMainHandler.post(paddingRunnable);
         }
     }
 

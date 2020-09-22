@@ -54,52 +54,52 @@ var data = {
   movies: [
     {
       rank: 1,
-      title: 'This is an',
+      title: '[Lu]是一款我用业余事件开发的',
       desc: 'Lorem ipsum dolor sit amet, sed pede integer vitae bibendum, accumsan sit, vulputate aenean tempora ipsum. Lorem sed id et metus, eros posuere suspendisse nec nunc justo, fusce augue placerat nibh purus suspendisse. Aliquam aliquam, ut eget. Mollis a eget sed nibh tincidunt nec, mi integer, proin magna lacus iaculis tortor. Aliquam vel arcu arcu, vivamus a urna fames felis vel wisi, cursus tortor nec erat dignissim cras sem, mauris ac venenatis tellus elit.'
     },
     {
       rank: 2,
-      title: 'example of',
+      title: '类似[Weex]、[ReactNative]的',
       desc: 'Consequuntur ipsum nulla, consequat curabitur in magnis risus. Taciti mattis bibendum tellus nibh, at dui neque eget, odio pede ut, sapien pede, ipsum ut. Sagittis dui, sodales sem, praesent ipsum conubia eget lorem lobortis wisi.'
     },
     {
       rank: 3,
-      title: 'Snabbdom',
+      title: '基于virtualDom的原生界面渲染框架',
       desc: 'Quam lorem aliquam fusce wisi, urna purus ipsum pharetra sed, at cras sodales enim vestibulum odio cras, luctus integer phasellus.'
     },
     {
       rank: 4,
-      title: 'doing hero transitions',
+      title: '可以使用Js渲染我们的界面并处理各种事件',
       desc: 'Et orci hac ultrices id in. Diam ultrices luctus egestas, sem aliquam auctor molestie odio laoreet. Pede nam cubilia, diam vestibulum ornare natoque, aenean etiam fusce id, eget dictum blandit et mauris mauris. Metus amet ad, elit porttitor a aliquet commodo lacus, integer neque imperdiet augue laoreet, nonummy turpis lacus sed pulvinar condimentum platea. Wisi eleifend quis, tristique dictum, ac dictumst. Sem nec tristique vel vehicula fringilla, nibh eu et posuere mi rhoncus.'
     },
     {
       rank: 5,
-      title: 'using the',
+      title: '设计开发理念是极简+探索',
       desc: 'Pede nam cubilia, diam vestibulum ornare natoque, aenean etiam fusce id, eget dictum blandit et mauris mauris. Metus amet ad, elit porttitor a aliquet commodo lacus, integer neque imperdiet augue laoreet, nonummy turpis lacus sed pulvinar condimentum platea. Wisi eleifend quis, tristique dictum, ac dictumst. Sem nec tristique vel vehicula fringilla, nibh eu et posuere mi rhoncus.'
     },
     {
       rank: 6,
-      title: 'module for hero transitions',
+      title: '但是总体架构我还是满意的',
       desc: 'Sapien laoreet, ligula elit tortor nulla pellentesque, maecenas enim turpis, quae duis venenatis vivamus ultricies, nunc imperdiet sollicitudin ipsum malesuada. Ut sem. Wisi fusce nullam nibh enim. Nisl hymenaeos id sed sed in. Proin leo et, pulvinar nunc pede laoreet.'
     },
     {
       rank: 7,
-      title: 'click on ar element in',
+      title: '这个项目不仅实现了virtualDom的渲染引擎',
       desc: 'Accumsan quia, id nascetur dui et congue erat, id excepteur, primis ratione nec. At nulla et. Suspendisse lobortis, lobortis in tortor fringilla, duis adipiscing vestibulum voluptates sociosqu auctor.'
     },
     {
       rank: 8,
-      title: 'the list',
+      title: '还实现了基于web的原生界面编辑器,封装了Rhino Js引擎',
       desc: 'Ante tellus egestas vel hymenaeos, ut viverra nibh ut, ipsum nibh donec donec dolor. Eros ridiculus vel egestas convallis ipsum, commodo ut venenatis nullam porta iaculis, suspendisse ante proin leo, felis risus etiam.'
     },
     {
       rank: 9,
-      title: 'to witness',
+      title: '可以在浏览器中编辑界面在手机中实时看到渲染效果',
       desc: 'Metus amet ad, elit porttitor a aliquet commodo lacus, integer neque imperdiet augue laoreet, nonummy turpis lacus sed pulvinar condimentum platea. Wisi eleifend quis, tristique dictum, ac dictumst.'
     },
     {
       rank: 10,
-      title: 'the effect',
+      title: '目前处理css还有些问题，支持的控件还不够多',
       desc: 'Et orci hac ultrices id in. Diam ultrices luctus egestas, sem aliquam auctor molestie odio laoreet. Pede nam cubilia, diam vestibulum ornare natoque, aenean etiam fusce id, eget dictum blandit et mauris mauris'
     },
   ]
@@ -175,7 +175,7 @@ const overviewView = (movies) =>
             delayed: {transform: 'translate(0)'},
             destroy: {transform: 'translateY(-2em)'}
           }
-        }, 'Top 10 movies'),
+        }, 'Lu简介'),
         h('div.spacer'),
       ]),
     ]),

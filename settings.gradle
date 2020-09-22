@@ -1,0 +1,6 @@
+include ':base'
+include ':engine'
+include ':render'
+include ':play'
+include ':app'
+rootProject.name = "lu"

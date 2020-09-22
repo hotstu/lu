@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lu Play Groud</title>
+    <link rel="stylesheet" href="./static/lib/codemirror.css">
+    <link rel="stylesheet" href="./static/theme/monokai.css">
+    <script src="./static/lib/codemirror.js"></script>
+    <script src="./static/mode/javascript/javascript.js"></script>
+    <script src="./static/addon/selection/active-line.js"></script>
+    <script src="./static/addon/edit/matchbrackets.js"></script>
+    <style>
+        .CodeMirror {
+            height: 480px;
+        }
+        li.err {
+            color: tomato;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div>
+        <textarea id="code" style="height: 480px">
+        </textarea>
+    </div>
+    <div style="display: flex">
+        <button id="send" style="flex: 1">发送</button>
+        <button id="clear" style="flex: 1">清除日志</button>
+        <button id="reset" style="flex: 1">重置scope</button>
+    </div>
+    <div style="height: 600px; overflow-y: auto">
+        <ul></ul>
+    </div>
+
+</div>
+
+<script>
+    const $ = document.querySelector.bind(document);
+    const editor = CodeMirror.fromTextArea($("#code"), {
+        lineNumbers: true,
+        styleActiveLine: true,
+        matchBrackets: true,
+        theme: 'monokai',
+        "extraKeys": {
+            'Ctrl-Enter': function () {
+                $("#send").dispatchEvent(new Event('click'))
+            }
+        }
+    });
+    editor.setValue("importClass(Packages.github.hotstu.rhinoplay_android.App)  \n" +
+        "const context = App.getInstance()  \n" +
+        "importClass(Packages.android.widget.Toast)\n" +
+        "Toast.makeText(context, \"hello, world\", 1).show()")
+
+    async function postData(url = '', data = "") {
+        // Default options are marked with *
+        const response = await fetch(url, {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            mode: 'cors', // no-cors, *cors, same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'same-origin', // include, *same-origin, omit
+            headers: {
+                'Content-Type': 'text/plain; charset=utf-8'
+            },
+            redirect: 'follow', // manual, *follow, error
+            referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+            body: data // body data type must match "Content-Type" header
+        });
+        return response.json(); // parses JSON response into native JavaScript objects
+    }
+
+    const createProperty = function (obj) {
+        var label = document.createElement("li");
+        label.innerText = obj.success ? obj.data : obj.err;
+        if (!obj.success) {
+            label.className = 'err';
+        }
+        return label
+    }
+    var ul1 = $("ul");
+    const addResponse = (obj) => {
+        ul1.appendChild(createProperty(obj))
+    }
+
+    $("#send").addEventListener('click', ev => {
+        //console.log(editor)
+        const task = async () => {
+            let message = await postData('/run', editor.getValue());
+            console.log(message)
+            addResponse(message)
+            editor.setValue('')
+        }
+        task()
+    })
+    $("#clear").addEventListener('click', ev => {
+        ul1.innerHTML = ''
+    })
+    $("#reset").addEventListener('click', ev => {
+        const task = async () => {
+            let message = await postData('/reset', {});
+            console.log(message)
+            addResponse(message)
+        }
+        task()
+    })
+</script>
+</body>
+</html>

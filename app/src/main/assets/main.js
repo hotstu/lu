@@ -51,7 +51,7 @@ const patch = init([
 
 var data = {
   selected: undefined,
-  movies: [
+  entries: [
     {
       rank: 1,
       title: '[Lu]是一款我用业余时间开发的',
@@ -163,7 +163,7 @@ const detailView = (movie) =>
     ]),
   ]);
 
-const overviewView = (movies) =>
+const overviewView = (entries) =>
   h('div.page', {style: fadeInOutStyle}, [
     h('div.header', [
       h('div.header-content.overview', {
@@ -186,7 +186,7 @@ const overviewView = (movies) =>
           opacity: '0', delayed: {opacity: '1'},
           remove: {opacity: '0', position: 'absolute', top: '0', left: '0'}
         }
-      }, movies.map((movie) =>
+      }, entries.map((movie) =>
         h('div.row', {
           on: {click: () => select(movie)},
         }, [
@@ -201,7 +201,7 @@ const overviewView = (movies) =>
 
 const view = (data) =>
   h('div.page-container', [
-    data.selected ? detailView(data.selected) : overviewView(data.movies),
+    data.selected ? detailView(data.selected) : overviewView(data.entries),
   ]);
 
 

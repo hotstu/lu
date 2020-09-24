@@ -30,7 +30,7 @@ public class LuEngineThread extends HandlerThread {
     public void init() {
         if (Context.getCurrentContext() == null) {
             Context context = RhinoAndroidHelper.prepareContext();
-            context.setOptimizationLevel(-1);
+            context.setOptimizationLevel(3);//TODO 大于0 == JIT
             context.setLanguageVersion(Context.VERSION_ES6);
             context.setLocale(Locale.getDefault());
             context.setWrapFactory(new WrapFactory() {

@@ -79,7 +79,9 @@ public class ServerApp extends NanoHTTPD {
             }
             return newFixedLengthResponse(Response.Status.OK, "application/json", "{\"success\": false}");
         } else if (uri.matches("^/reset$")) {
-//            ScriptRunner.getInstance().resetScope();
+            if (scriptRunner != null) {
+                scriptRunner.apply("$context.resetContextScope()");
+            }
             return newFixedLengthResponse(Response.Status.OK, "application/json", "{\"success\": true}");
         } else if (uri.matches("^/$")) {
             if (msg == null) {

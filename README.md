@@ -27,10 +27,26 @@ Lu-Another
 基于AIDL的模块化技术
 
 
-# demo使用方式：
+# demo使用方式
+
 手机、PC连接在同一wifi下， 启动App， PC访问`http://手机ip:8080/`
+
 (如果手机为模拟器， 需要先执行`adb -e forward tcp:8080 tcp:8080`, 然后访问`http://127.0.0.1:8080/`)
 
+
 # 运行效果
+
+<img src="./demo.png" width="400">
+
+
+
+## more about me
+
+|简书| 掘金|JCenter | dockerHub|
+| ------------- |------------- |------------- |------------- |
+| [简书](https://www.jianshu.com/u/ca2207af2001) | [掘金](https://juejin.im/user/5bee320651882516be2ebbfe) |[JCenter ](https://bintray.com/hglf/maven)      | [dockerHub](https://hub.docker.com/u/hglf)|
+
+
+
 
 

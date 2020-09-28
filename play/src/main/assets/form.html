@@ -32,7 +32,6 @@
     <div style="height: 600px; overflow-y: auto">
         <ul></ul>
     </div>
-
 </div>
 
 <script>
@@ -48,10 +47,9 @@
             }
         }
     });
-    editor.setValue("importClass(Packages.github.hotstu.rhinoplay_android.App)  \n" +
-        "const context = App.getInstance()  \n" +
+    editor.setValue(
         "importClass(Packages.android.widget.Toast)\n" +
-        "Toast.makeText(context, \"hello, world\", 1).show()")
+        "Toast.makeText($context.getContext(), \"hello, world\", 1).show()")
 
     async function postData(url = '', data = "") {
         // Default options are marked with *

@@ -36,7 +36,7 @@ Lu-Another
 
 # 运行效果
 
-<img src="./demo.png" width="400">
+<img src="./demo.gif" width="400">
 
 
 

@@ -115,8 +115,8 @@ public abstract class NativeComponent<T extends View> {
     }
 
     public void appendChild(NativeComponent<?> child) {
-        children.add(child);
         child.setParent(this);
+        children.add(child);
         this.onAttachChild(child);
     }
 

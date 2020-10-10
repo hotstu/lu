@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 
 import github.hotstu.lu.render.NativeComponent;
+import github.hotstu.lu.render.annotation.WidgetDef;
 
 
 /**
@@ -15,6 +16,7 @@ import github.hotstu.lu.render.NativeComponent;
  * @desc
  * @since 9/14/20
  */
+@WidgetDef
 public class LuLinearLayout extends LinearLayout {
     NativeComponent<?> component;
     public LuLinearLayout(Context context) {
@@ -40,7 +42,7 @@ public class LuLinearLayout extends LinearLayout {
 
     @Override
     public String toString() {
-        return "CpLinear{" +
+        return "LuLinearLayout{" +
                 "component=" + component +
                 '}';
     }

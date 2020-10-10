@@ -16,6 +16,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import github.hotstu.lu.render.annotation.RenderAPI;
 import github.hotstu.lu.render.event.LuClickHandler;
 import github.hotstu.lu.render.module.ClassManager;
 
@@ -48,6 +49,7 @@ public abstract class NativeComponent<T extends View> {
                 '}';
     }
 
+    @RenderAPI
     public void setAttribute(String attr, String value) {
         if ("class".equals(attr)) {
             classManager.setClass(value.split(" "));
@@ -68,6 +70,7 @@ public abstract class NativeComponent<T extends View> {
         return mRenderContext;
     }
 
+    @RenderAPI
     public boolean addEventListener(String event, Function func) {
         if ("click".equals(event)) {
             new LuClickHandler(event, func, mRenderContext).attach(mView);
@@ -76,6 +79,7 @@ public abstract class NativeComponent<T extends View> {
         return false;
     }
 
+    @RenderAPI
     public boolean removeEventListener(String event, Function func) {
         if ("click".equals(event)) {
             LuClickHandler.removeEventListener(mView, event, func);
@@ -84,17 +88,7 @@ public abstract class NativeComponent<T extends View> {
         return false;
     }
 
-    protected abstract void onAttachChild(NativeComponent<?> child);
-
-    protected abstract void onAttachChild(NativeComponent<?> child, int index);
-
-    protected abstract void onDetachChild(NativeComponent<?> child);
-
-    @CallSuper
-    public void onAttached() {
-        classManager.update();
-    }
-
+    @RenderAPI
     public void insertBefore(NativeComponent<?> child, NativeComponent<?> reference) {
         if (reference == null) {
             appendChild(child);
@@ -108,18 +102,21 @@ public abstract class NativeComponent<T extends View> {
         }
     }
 
+    @RenderAPI
     public void removeChild(NativeComponent<?> child) {
         child.setParent(null);
         children.remove(child);
         this.onDetachChild(child);
     }
 
+    @RenderAPI
     public void appendChild(NativeComponent<?> child) {
         child.setParent(this);
         children.add(child);
         this.onAttachChild(child);
     }
 
+    @RenderAPI
     public NativeComponent<?> findNextSibling(NativeComponent<?> child) {
         int i = children.indexOf(child);
         if (i + 1 > children.size()) {
@@ -128,13 +125,27 @@ public abstract class NativeComponent<T extends View> {
         return null;
     }
 
+    @RenderAPI
     public NativeComponent<?> findParent() {
         return parent;
     }
 
+    @RenderAPI
     public void setParent(NativeComponent<?> parent) {
         this.parent = parent;
     }
+
+    protected abstract void onAttachChild(NativeComponent<?> child);
+
+    protected abstract void onAttachChild(NativeComponent<?> child, int index);
+
+    protected abstract void onDetachChild(NativeComponent<?> child);
+
+    @CallSuper
+    public void onAttached() {
+        classManager.update();
+    }
+
 
     protected int dp2px(int dp) {
         float density = getRenderContext().getContext().getResources().getDisplayMetrics().density;
